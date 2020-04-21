@@ -1,5 +1,6 @@
-import ast
 import tkinter
+
+import numexpr
 
 expression = ""
 
@@ -13,7 +14,7 @@ def press(num):
 def equalpress():
     try:
         global expression
-        total = str(ast.literal_eval(expression))
+        total = str(numexpr.evaluate(expression))
         equation.set(total)
         expression = ""
     except (ZeroDivisionError, SyntaxError):
