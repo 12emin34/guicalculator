@@ -13,6 +13,7 @@ class CalculatorApp(tkinter.Frame):
         root.configure(background="gray")
         root.title("Calculator")
         root.geometry("400x315")
+        root.resizable(0, 0)
         self.create_widgets()
 
     def create_widgets(self):
