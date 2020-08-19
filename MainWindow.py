@@ -5,6 +5,7 @@ import numexpr
 
 class CalculatorApp(tkinter.Frame):
     def __init__(self, expression, equation, master=None):
+        self.equation = equation
         self.expression = expression
         self.expression = ""
         self.equation = tkinter.StringVar()
@@ -85,7 +86,6 @@ class CalculatorApp(tkinter.Frame):
         clear.grid(row=1, column='3', )
 
     def press(self, num):
-        self.num = num
         self.expression = self.expression + str(num)
         self.equation.set(self.expression)
 
@@ -94,7 +94,7 @@ class CalculatorApp(tkinter.Frame):
             total = str(numexpr.evaluate(self.expression))
             self.equation.set(total)
             self.expression = ""
-        except (ZeroDivisionError, SyntaxError):
+        except (ZeroDivisionError, SyntaxError, OverflowError):
             self.equation.set(" error ")
             self.expression = ""
 
